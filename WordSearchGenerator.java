@@ -17,6 +17,7 @@ public class WordSearchGenerator {
 				//prompt user for each word
 				//create WordEntry for each word
 				//load each WordEntry into an ArrayList
+				//determine dimensions
 				//generate the WordSearchBase with ArrayList
 				System.out.println("generate");
 			} else if(option.equals("P")){
