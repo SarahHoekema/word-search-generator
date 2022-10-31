@@ -1,5 +1,9 @@
 package WordSearch;
 
-public class WordSearchSolution {
+import java.util.*;
 
+public class WordSearchSolution extends WordSearchBase{
+	public WordSearchSolution(WordSearchBase wordSearch) {
+		super(wordSearch.getWords());
+	}
 }
