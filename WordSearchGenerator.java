@@ -1,6 +1,6 @@
 package WordSearch;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class WordSearchGenerator {
 	public static void main(String[] args) {
@@ -10,22 +10,23 @@ public class WordSearchGenerator {
 		printDirections();
 		String option = "";
 		do{
+			//construct WordSearchBase
 			option = input.next().toUpperCase();
 			if(option.equals("G")){
 				//prompt user for number of words
 				//prompt user for each word
 				//create WordEntry for each word
 				//load each WordEntry into an ArrayList
-				//construct WordSearchBase with ArrayList
-				//construct WordSearchGame with WordSearchBase
-				//construct WordSearchSolution with WordSearchBase
+				//generate the WordSearchBase with ArrayList
 				System.out.println("generate");
 			} else if(option.equals("P")){
-				//print out WordSearchGame
+				//construct WordSearchGame with WordSearchBase
+				//print WordSearchGame
 				//throw an error message if there is no current word search
 				System.out.println("print");
 			} else if(option.equals("S")){
-				//print out WordSearchSolution
+				//construct WordSearchSolution with WordSearchBase
+				//print WordSearchSolution
 				//throw an error message if there is no current word search
 				System.out.println("solution");
 			} else if(option.equals("D")){

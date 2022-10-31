@@ -34,11 +34,6 @@ public class WordEntry {
 	        throw new IllegalArgumentException();
 	    }
 	}
-	
-	//returns a String of the entry's word
-	public String getWord() {
-		return word;
-	}
 
 	//accepts a char and int and sets the new value,
 	//if char is not letter throw IllegalArgumentException
