@@ -21,6 +21,7 @@ public class WordSearchGenerator {
 			WordSearchSolution gameSolution = new WordSearchSolution(gameBase);
 			gameSolution.generate();
 			System.out.println(gameSolution);
+			System.out.println(gameBase);
 			option = input.next().toUpperCase();
 			if(option.equals("G")){
 				//prompt user for number of words
