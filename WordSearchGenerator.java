@@ -16,10 +16,8 @@ public class WordSearchGenerator {
 			temp.add(new WordEntry("heyo"));
 			//construct WordSearchBase
 			WordSearchBase gameBase = new WordSearchBase(temp, 10);
-			gameBase.generate();
 			System.out.println(gameBase);
 			WordSearchSolution gameSolution = new WordSearchSolution(gameBase);
-			gameSolution.generate();
 			System.out.println(gameSolution);
 			WordSearchGame game = new WordSearchGame(gameBase);
 			game.generate();

@@ -14,11 +14,12 @@ public class WordSearchBase {
 		this.words = new ArrayList<WordEntry>(words);
 		this.base = new char[dimensions][dimensions];
 		this.dimensions = dimensions;
+		generate();
 	}
 	
 	//method to generate word search upon construction
 	//TODO: make an algorithm to randomize word insertion
-	public void generate() {
+	private void generate() {
 		for(int i = 0; i < base.length; i++) {
 			for(int j = 0; j < base[i].length; j+=2) {
 				base[i][j] = 'B';
