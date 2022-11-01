@@ -5,18 +5,22 @@ import java.util.*;
 public class WordSearchSolution{
 	//fields
 	private ArrayList<WordEntry> words;
-	char[][] solution;
+	private char[][] base;
+	private char[][] solution;
 	
 	//constructor
 	public WordSearchSolution(WordSearchBase base) {
 		words = base.getWords();
-		solution = base.getWordSearch().clone();
+		this.base = base.getWordSearch();
+		solution = new char[base.getDimensions()][base.getDimensions()];
+		
 	}
 	
 	//generate the word search solution
 	public void generate() {
 		for(int i = 0; i < solution.length; i++) {
 			for(int j = 0; j < solution[i].length; j++) {
+				solution[i][j] = base[i][j];
 				if(solution[i][j] == '0') {
 					solution[i][j] = 'X';
 				}
