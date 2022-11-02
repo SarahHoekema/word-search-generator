@@ -20,17 +20,47 @@ public class WordSearchBase {
 	//method to generate word search upon construction
 	//TODO: make an algorithm to randomize word insertion
 	private void generate() {
-		for(int i = 0; i < base.length; i++) {
-			for(int j = 0; j < base[i].length; j+=2) {
-				base[i][j] = 'B';
-				base[i][j+1] = '0';
-			}
-		}
+		//vertical word
+//		for(int i = 0; i < words.size(); i++) {
+//			String word = words.get(i).toString();
+//			for(int  j= 0; j < word.length(); j++) {
+//				base[j][i] = word.charAt(j);
+//			}
+//		}
+		//horizontal word
+//		for(int i = 0; i < words.size(); i++) {
+//			String word = words.get(i).toString();
+//			for(int j = 0; j < word.length(); j++) {
+//				base[i][j] = word.charAt(j);
+//			}
+//		}
+		//reverse vertical word
+//		for(int i = 0; i < words.size(); i++) {
+//			String temp = words.get(i).toString();
+//			String word = "";
+//			for(int j = temp.length()-1; j>=0; j--) {
+//				word+=temp.charAt(j);
+//			}
+//			for(int  j= 0; j < word.length(); j++) {
+//				base[j][i] = word.charAt(j);
+//			}
+//		}
+		//reverse horizontal word
+//		for(int i = 0; i < words.size(); i++) {
+//			String temp = words.get(i).toString();
+//			String word = "";
+//			for(int j = temp.length()-1; j>=0; j--) {
+//				word+=temp.charAt(j);
+//			}
+//			for(int j = 0; j < word.length(); j++) {
+//				base[i][j] = word.charAt(j);
+//			}
+//		}
 	}
 	
 	//toString method	
 	public String toString() {
-		String s = "";
+		String s = "\n";
 		for(int i = 0; i < base.length; i++) {
 			for(int j = 0; j < base[i].length; j++) {
 				s += base[i][j] + "  ";
@@ -61,15 +91,5 @@ public class WordSearchBase {
 	//returns the dimensions of the word search
 	public int getDimensions(){
 		return dimensions;
-	}
-	
-	//sets the words ArrayList
-	public void setWords(ArrayList<WordEntry> words){
-		this.words = words;
-	}
-	
-	//sets the base 2D array
-	public void setWordSearch(char[][] base){
-		this.base = base;
 	}
 }

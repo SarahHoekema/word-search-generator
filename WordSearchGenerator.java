@@ -4,43 +4,62 @@ import java.util.*;
 
 public class WordSearchGenerator {
 	public static void main(String[] args) {
+		//TODO: add comments
 		Scanner input = new Scanner(System.in);
+		String option = "";
+		//construct WordSearchBase
+		WordSearchBase base = null;
+		WordSearchGame game = null;
+		WordSearchSolution solution = null;
 		
 		printIntro();
 		printDirections();
-		String option = "";
 		do{
-			ArrayList<WordEntry> temp = new ArrayList<WordEntry>();
-			temp.add(new WordEntry("hello"));
-			temp.add(new WordEntry("hi"));
-			temp.add(new WordEntry("heyo"));
-			//construct WordSearchBase
-			WordSearchBase gameBase = new WordSearchBase(temp, 10);
-			System.out.println(gameBase);
-			WordSearchSolution gameSolution = new WordSearchSolution(gameBase);
-			System.out.println(gameSolution);
-			WordSearchGame game = new WordSearchGame(gameBase);
-			game.generate();
-			System.out.println(game);
+			//prompt for option
+			System.out.print("Please enter a command: ");
+			//read in option input
 			option = input.next().toUpperCase();
 			if(option.equals("G")){
+				ArrayList<WordEntry> words = new ArrayList<WordEntry>();
+				int dimensions = 0;
+				
 				//prompt user for number of words
-				//prompt user for each word
-				//create WordEntry for each word
-				//load each WordEntry into an ArrayList
-				//determine dimensions
+				System.out.print("How many words would you like to enter? "); 
+				int wordNum = input.nextInt();
+				
+				//TODO: error handle incorrect input
+				for(int i = 0; i < wordNum; i++) {
+					//prompt for word
+					System.out.print("Next word? ");
+					//create WordEntry for each word
+					WordEntry entry = new WordEntry(input.next());
+					//load each WordEntry into an ArrayList
+					words.add(entry);
+					//determine dimensions
+					if(entry.size() > dimensions) {
+						dimensions = entry.size();
+					}
+				}
+				System.out.println("Thanks for entering in your words!\n");
+				
 				//generate the WordSearchBase with ArrayList
-				System.out.println("generate");
+				base = new WordSearchBase(words, dimensions*2);
+				game = new WordSearchGame(base);
+				solution = new WordSearchSolution(base);
 			} else if(option.equals("P")){
-				//construct WordSearchGame with WordSearchBase
-				//print WordSearchGame
 				//throw an error message if there is no current word search
-				System.out.println("print");
+				if(game == null) {
+					System.out.println("I'm sorry, you haven't generated a word search yet.\n");
+				} else { //print WordSearchGame
+					System.out.println(game);
+				}
 			} else if(option.equals("S")){
-				//construct WordSearchSolution with WordSearchBase
-				//print WordSearchSolution
 				//throw an error message if there is no current word search
-				System.out.println("solution");
+				if(solution == null) {
+					System.out.println("I'm sorry, you haven't generated a word search yet.\n");
+				} else { //print WordSearchSolution
+					System.out.println(solution);
+				}
 			} else if(option.equals("D")){
 				printDirections();
 			} else if(option.equals("Q")) {
@@ -63,7 +82,7 @@ public class WordSearchGenerator {
 	
 	//prints out the directions to the word search generator
 	public static void printDirections() {
-		System.out.println("Please enter in the letter of one of options below:");
+		System.out.println("Command options:");
 		System.out.println("-Generate a new word search (G)");
 		System.out.println("-Print out the word search (P)");
 		System.out.println("-Show the solution to the word search (S)");

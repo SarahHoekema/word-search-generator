@@ -1,7 +1,5 @@
 package WordSearch;
 
-import java.util.*;
-
 public class WordSearchSolution extends WordSearchBase{
 	//fields
 	private char[][] solution;
@@ -28,7 +26,7 @@ public class WordSearchSolution extends WordSearchBase{
 	
 	//toString method	
 	public String toString() {
-		String s = "";
+		String s = "\n";
 		for(int i = 0; i < solution.length; i++) {
 			for(int j = 0; j < solution[i].length; j++) {
 				s += solution[i][j] + "  ";

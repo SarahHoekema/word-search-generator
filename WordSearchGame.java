@@ -14,7 +14,7 @@ public class WordSearchGame extends WordSearchBase{
 	}
 	
 	//generates a word search game
-	public void generate(){
+	private void generate(){
 		char[][] base = super.getWordSearch();
 		Random r = new Random();
 		for(int i = 0; i < game.length; i++) {
@@ -29,7 +29,7 @@ public class WordSearchGame extends WordSearchBase{
 	
 	//toString method	
 		public String toString() {
-			String s = "";
+			String s = "\n";
 			for(int i = 0; i < game.length; i++) {
 				for(int j = 0; j < game[i].length; j++) {
 					s += game[i][j] + "  ";

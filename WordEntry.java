@@ -14,11 +14,11 @@ public class WordEntry {
 	    letterArray = new int[NUMBER_OF_LETTERS];
 	    word = input.toUpperCase();
 	    //loops through the string examining every letter
-	    for (int i = 0; i < input.length(); i++){
+	    for (int i = 0; i < word.length(); i++){
 	        //checks if it is a capital letter
-	        if(input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'){
+	        if(word.charAt(i) >= 'A' && word.charAt(i) <= 'Z'){
 	            //increases the value at a specific point in the array
-	            letterArray[input.charAt(i) - 'A']++;
+	            letterArray[word.charAt(i) - 'A']++;
 	            size++;
 	        }
 	    }
