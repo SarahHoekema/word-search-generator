@@ -1,6 +1,7 @@
 package WordSearch;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class WordSearchGenerator {
 	public static void main(String[] args) {
@@ -26,18 +27,19 @@ public class WordSearchGenerator {
 				//prompt user for number of words
 				System.out.print("How many words would you like to enter? "); 
 				int wordNum = input.nextInt();
-				
+				System.out.println("Please enter one word at a time:");
 				//TODO: error handle incorrect input
 				for(int i = 0; i < wordNum; i++) {
 					//prompt for word
 					System.out.print("Next word? ");
 					//create WordEntry for each word
-					WordEntry entry = new WordEntry(input.next());
+					String word = checkWord(input.next(), input);
+					WordEntry entry = new WordEntry(word);
 					//load each WordEntry into an ArrayList
 					words.add(entry);
 					//determine dimensions
-					if(entry.size() > dimensions) {
-						dimensions = entry.size();
+					if(word.length() > dimensions) {
+						dimensions = word.length();
 					}
 				}
 				System.out.println("Thanks for entering in your words!\n");
@@ -91,6 +93,15 @@ public class WordSearchGenerator {
 		System.out.println();
 	}
 	
+	//checks if the word entry is valid using the Pattern and Matcher classes
+	public static String checkWord(String word, Scanner input) {
+		if(Pattern.matches(".*[0-9\\W_].*", word)) {
+			System.out.print("That word is invalid!! Please entry a new word: ");
+			return checkWord(input.next(), input);
+		} else {
+			return word;
+		}
+	}
 	//prints the outro to the word search generator
 	public static void printOutro() {
 		System.out.println("Thank you for using the word search generator.");

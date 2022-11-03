@@ -46,16 +46,16 @@ public class WordSearchBase {
 //			}
 //		}
 		//reverse horizontal word
-//		for(int i = 0; i < words.size(); i++) {
-//			String temp = words.get(i).toString();
-//			String word = "";
-//			for(int j = temp.length()-1; j>=0; j--) {
-//				word+=temp.charAt(j);
-//			}
-//			for(int j = 0; j < word.length(); j++) {
-//				base[i][j] = word.charAt(j);
-//			}
-//		}
+		for(int i = 0; i < words.size(); i++) {
+			String temp = words.get(i).toString();
+			String word = "";
+			for(int j = temp.length()-1; j>=0; j--) {
+				word+=temp.charAt(j);
+			}
+			for(int j = 0; j < word.length(); j++) {
+				base[i][j] = word.charAt(j);
+			}
+		}
 	}
 	
 	//toString method	
