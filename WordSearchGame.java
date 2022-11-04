@@ -1,7 +1,14 @@
+//Sarah Hoekema
+//CS 145
+//November 8, 2022
+//Assignment 1 - Word Search Generator
+
 package WordSearch;
 
 import java.util.*;
 
+//WordSearchGame.java uses a WordSearchBase to create a word search with randomly
+//generated Char values in place of the '0' null values
 public class WordSearchGame{
 	//fields
 	private ArrayList<String> words;
@@ -16,7 +23,8 @@ public class WordSearchGame{
 		generate();
 	}
 	
-	//generates a word search game
+	//generates a word search game by filling '0' null values
+	//with a randomly generated Char
 	private void generate(){
 		Random r = new Random();
 		for(int i = 0; i < game.length; i++) {
@@ -29,7 +37,7 @@ public class WordSearchGame{
 		}
 	}
 	
-	//toString method	
+	//returns a String representation of the word search game
 		public String toString() {
 			String s = "\n";
 			for(int i = 0; i < game.length; i++) {

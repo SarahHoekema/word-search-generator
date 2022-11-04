@@ -1,7 +1,16 @@
+//Sarah Hoekema
+//CS 145
+//November 8, 2022
+//Assignment 1 - Word Search Generator
+
 package WordSearch;
 
 import java.util.*;
 
+//WordSearchBase.java generates a base word search using the provided words and dimensions.
+//The words are added into the word search in normal or reverse order or in vertical, horizontal,
+//or diagonal direction. Any empty spaces in the word search are filled with '0' characters as
+//null values.
 public class WordSearchBase {
 	//fields
 	private ArrayList<String> words;
@@ -18,21 +27,24 @@ public class WordSearchBase {
 	}
 	
 	//method to generate word search upon construction
-	//TODO: make an algorithm to randomize word insertion
 	private void generate() {
+		//constructs Random to randomize word reversal and direction
 		Random r = new Random();
-		//populate the 2D array with null values
+		
+		//populates the 2D array with '0' characters as null values
 		for(int i = 0; i < base.length; i++) {
 			for(int j = 0; j < base[i].length; j++) {
 				base[i][j] = '0';
 			}
 		}
-		//traverse through words ArrayList to individually add each word
+		//traverses through each word in the ArrayList and adds into the word search
 		for(String word : words) {
+			//initializes to null values
 			String s = null;
 			int xVal = 0;
 			int yVal = 0;
-			//select if reverse or not
+			
+			//randomizes if the word is reversed or not
 			int reverse = r.nextInt(2);
 			switch(reverse) {
 			case 0:
@@ -43,42 +55,44 @@ public class WordSearchBase {
 				break;
 			}
 			
-			//select direction of the word
+			//selects the direction of the word
 			int direction = r.nextInt(3);
 			
-			//generates x and y values for the word until a suitable combo is found
-			if(direction == 0) {
+			//generates x and y values for the word until a usuable coordinates are found
+			//for the word
+			if(direction == 0) { //vertical 
 				do {
 					xVal = r.nextInt(dimensions);
 					yVal = r.nextInt(dimensions);					
 				} while(!checkVertical(s, xVal, yVal));
-			} else if (direction == 1){
+			} else if (direction == 1){ //horizontal
 				do {
 					xVal = r.nextInt(dimensions);
 					yVal = r.nextInt(dimensions);					
 				} while(!checkHorizontal(s, xVal, yVal));
-			} else {
+			} else { //diagonal
 				do {
 					xVal = r.nextInt(dimensions);
 					yVal = r.nextInt(dimensions);					
 				} while(!checkDiagonal(s, xVal, yVal));
 			}
 			
-			//add word into word search
+			//adds the word into the 2D array after suitable coordinates are found
 			switch(direction) {
-			case 0:	
+			case 0:	//vertical
 				vertical(s, xVal, yVal);
 				break;
-			case 1:
+			case 1: //horizontal
 				horizontal(s, xVal, yVal);
 				break;
-			case 2:
+			case 2: //diagonal
 				diagonal(s, xVal, yVal);
 				break;
 			}
 		}
 	}
 	
+	//accepts a word and an x and y value as parameters
 	//adds a word into the 2D array vertically
 	private void vertical(String word, int xVal, int yVal) {
 		for(int i = 0; i < word.length(); i++) {
@@ -87,6 +101,7 @@ public class WordSearchBase {
 		}		
 	}
 	
+	//accepts a word and an x and y value as parameters
 	//adds a word into the 2D array horizontally
 	private void horizontal(String word, int xVal, int yVal) {
 		for(int i = 0; i < word.length(); i++) {
@@ -95,6 +110,7 @@ public class WordSearchBase {
 		}	
 	}
 	
+	//accepts a word and an x and y value as parameters
 	//adds a word into the 2D array diagonally
 	private void diagonal(String word, int xVal, int yVal) {
 		for(int i = 0; i < word.length(); i++) {
@@ -104,7 +120,9 @@ public class WordSearchBase {
 		}
 	}
 	
-	//check if word can be added in vertically
+	//accepts a word and an x and y value as parameters
+	//checks if word can be added in vertically
+	//returns true if the word can be added and false it not
 	private boolean checkVertical(String word, int xVal, int yVal) {
 		if(xVal + word.length() > dimensions ||
 		   yVal + word.length() > dimensions) {
@@ -119,7 +137,9 @@ public class WordSearchBase {
 		return true;
 	}
 	
+	//accepts a word and an x and y value as parameters
 	//check if word can be added in horizontally
+	//returns true if the word can be added and false it not
 	private boolean checkHorizontal(String word, int xVal, int yVal) {
 		if(xVal + word.length() > dimensions ||
 		   yVal + word.length() > dimensions) {
@@ -134,7 +154,9 @@ public class WordSearchBase {
 		return true;
 	}
 	
+	//accepts a word and an x and y value as parameters
 	//check if word can be added in diagonally
+	//returns true if the word can be added and false it not
 	private boolean checkDiagonal(String word, int xVal, int yVal) {
 		if(xVal + word.length() > dimensions ||
 		   yVal + word.length() > dimensions) {
@@ -150,7 +172,9 @@ public class WordSearchBase {
 		return true;
 	}
 	
+	//accepts a word as a parameter
 	//reverses the provided word
+	//returns the reversed word
 	private String reverse(String word) {
 		String s = "";
 		for(int i = word.length()-1; i >= 0; i--) {
@@ -158,7 +182,7 @@ public class WordSearchBase {
 		}
 		return s;
 	}
-	//toString method	
+	//returns a String representation of the word search base	
 	public String toString() {
 		String s = "\n";
 		for(int i = 0; i < base.length; i++) {

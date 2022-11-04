@@ -1,3 +1,8 @@
+//Sarah Hoekema
+//CS 145
+//November 8, 2022
+//Assignment 1 - Word Search Generator
+
 package WordSearch;
 
 import java.util.ArrayList;
