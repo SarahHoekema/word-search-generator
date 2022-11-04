@@ -7,6 +7,8 @@ package WordSearch;
 
 import java.util.ArrayList;
 
+//WordSearchSolution.java uses a WordSearchBase to create a word search with 'X'
+//in place of the '0' null values
 public class WordSearchSolution {
 	//fields
 	private ArrayList<String> words;
@@ -21,7 +23,8 @@ public class WordSearchSolution {
 		generate();
 	}
 	
-	//generate the word search solution
+	//generates a word search game by filling '0' null values
+	//with a 'X' values
 	private void generate() {
 		for(int i = 0; i < solution.length; i++) {
 			for(int j = 0; j < solution[i].length; j++) {
@@ -33,7 +36,7 @@ public class WordSearchSolution {
 		}
 	}
 	
-	//toString method	
+	//returns a String representation of the word search solution	
 	public String toString() {
 		String s = "\n";
 		for(int i = 0; i < solution.length; i++) {

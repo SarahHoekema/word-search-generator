@@ -24,7 +24,7 @@ public class WordSearchGame{
 	}
 	
 	//generates a word search game by filling '0' null values
-	//with a randomly generated Char
+	//with a randomly generated Char values
 	private void generate(){
 		Random r = new Random();
 		for(int i = 0; i < game.length; i++) {
@@ -38,23 +38,23 @@ public class WordSearchGame{
 	}
 	
 	//returns a String representation of the word search game
-		public String toString() {
-			String s = "\n";
-			for(int i = 0; i < game.length; i++) {
-				for(int j = 0; j < game[i].length; j++) {
-					s += game[i][j] + "  ";
-				}
-				s += "\n";
-			}
-			s += "\n" + words.get(0) + "    ";
-			for(int i = 1; i < words.size(); i++) {
-				s += words.get(i) + "    ";
-				if(i%6 == 0) {
-					s += "\n";
-				}
+	public String toString() {
+		String s = "\n";
+		for(int i = 0; i < game.length; i++) {
+			for(int j = 0; j < game[i].length; j++) {
+				s += game[i][j] + "  ";
 			}
 			s += "\n";
-			return s;
 		}
+		s += "\n" + words.get(0) + "    ";
+		for(int i = 1; i < words.size(); i++) {
+			s += words.get(i) + "    ";
+			if(i%6 == 0) {
+				s += "\n";
+			}
+		}
+		s += "\n";
+		return s;
+	}
 
 }
