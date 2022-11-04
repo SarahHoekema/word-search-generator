@@ -1,19 +1,23 @@
 package WordSearch;
 
-public class WordSearchSolution extends WordSearchBase{
+import java.util.ArrayList;
+
+public class WordSearchSolution {
 	//fields
+	private ArrayList<String> words;
+	private char[][] base;
 	private char[][] solution;
 	
 	//constructor
 	public WordSearchSolution(WordSearchBase base) {
-		super(base.getWords(), base.getDimensions());
-		solution = new char[base.getDimensions()][base.getDimensions()];
+		this.base = base.getWordSearch();
+		this.words = base.getWords();
+		this.solution = new char[base.getDimensions()][base.getDimensions()];
 		generate();
 	}
 	
 	//generate the word search solution
 	private void generate() {
-		char[][] base = super.getWordSearch();
 		for(int i = 0; i < solution.length; i++) {
 			for(int j = 0; j < solution[i].length; j++) {
 				solution[i][j] = base[i][j];
@@ -33,9 +37,9 @@ public class WordSearchSolution extends WordSearchBase{
 			}
 			s += "\n";
 		}
-		s += "\n" + super.getWords().get(0) + "    ";
-		for(int i = 1; i < super.getWords().size(); i++) {
-			s += super.getWords().get(i) + "    ";
+		s += "\n" + words.get(0) + "    ";
+		for(int i = 1; i < words.size(); i++) {
+			s += words.get(i) + "    ";
 			if(i%6 == 0) {
 				s += "\n";
 			}

@@ -21,7 +21,7 @@ public class WordSearchGenerator {
 			//read in option input
 			option = input.next().toUpperCase();
 			if(option.equals("G")){
-				ArrayList<WordEntry> words = new ArrayList<WordEntry>();
+				ArrayList<String> words = new ArrayList<String>();
 				int dimensions = 0;
 				
 				//prompt user for number of words
@@ -33,10 +33,9 @@ public class WordSearchGenerator {
 					//prompt for word
 					System.out.print("Next word? ");
 					//create WordEntry for each word
-					String word = checkWord(input.next(), input);
-					WordEntry entry = new WordEntry(word);
+					String word = checkWord(input.next().toUpperCase(), input);
 					//load each WordEntry into an ArrayList
-					words.add(entry);
+					sortAndAddEntry(word, words);
 					//determine dimensions
 					if(word.length() > dimensions) {
 						dimensions = word.length();
@@ -67,7 +66,7 @@ public class WordSearchGenerator {
 			} else if(option.equals("Q")) {
 				printOutro();
 			} else{
-				System.out.println("Sorry, that input isn't valid. Please try again.");
+				System.out.println("Sorry, that input isn't valid. Please try again.\n");
 			}
 		}while(!option.equals("Q"));
 		
@@ -97,9 +96,23 @@ public class WordSearchGenerator {
 	public static String checkWord(String word, Scanner input) {
 		if(Pattern.matches(".*[0-9\\W_].*", word)) {
 			System.out.print("That word is invalid!! Please entry a new word: ");
-			return checkWord(input.next(), input);
+			return checkWord(input.next().toUpperCase(), input);
 		} else {
 			return word;
+		}
+	}
+	
+	//sorts the word entry into the array by longest to shortest length
+	public static void sortAndAddEntry(String entry, ArrayList<String> words) {
+		if(words.size() == 0 || words.get(words.size()-1).length() > entry.length()) {
+			words.add(entry);
+		} else{
+			for(int i = 0; i < words.size(); i++) {
+				if(words.get(i).length() <= entry.length()) {
+					words.add(i, entry);
+					break;
+				}
+			}
 		}
 	}
 	//prints the outro to the word search generator
